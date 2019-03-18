@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <h1>My Site</h1>
+        <a href="{% url 'index' %}">Главная</a> /
+        <a href="{% url 'signup' %}">Регистрация</a>
+        <hr>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
