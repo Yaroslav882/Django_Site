@@ -7,7 +7,12 @@
     <body>
         <h1>My Site</h1>
         <a href="{% url 'index' %}">Главная</a> /
-        <a href="{% url 'signup' %}">Регистрация</a>
+        {% if user.is_authenticate %}
+            <a href="{% url 'logout' %}">Выход</a>
+        {% else %}
+            <a href="{% url 'signup' %}">Регистрация</a> /
+            <a href="{% url 'login' %}">Вход</a> /
+        {% endif %}
         <hr>
         {% block content %}
         {% endblock %}
