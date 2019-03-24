@@ -2,6 +2,5 @@
 
 {% block content %}
     <h2>ТУПО САЙТ!</h2>
-    <!-- <p>to My Site - {% if user.is_authenticate %}{{ user.username }}{% else %}No Name!{% endif %}</p> -->
-    <p>Добро пожаловать на мой сай - {% if user.is_authenticate %}{{ user.first_name }}{% else %}Бот{% endif %}!</p>
+    <p>Добро пожаловать на мой сай - {% if user.is_authenticated %}{{ user.username }}{% else %}БОТ{% endif %}!</p>
 {% endblock %}
