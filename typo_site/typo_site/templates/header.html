@@ -8,6 +8,7 @@
         <h1>My Site</h1>
         <a href="{% url 'index' %}">Главная</a> /
         {% if user.is_authenticated %}
+            <a href="{% url 'my_info' %}">Тупо инфа</a> /
             <a href="{% url 'password_change' %}">Сменить пароль</a> /
             <a href="{% url 'logout' %}">Выход</a>
             <strong>{{ user.username }}</strong>
