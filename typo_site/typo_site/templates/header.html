@@ -1,23 +1,64 @@
-<!DOCTYPE html>
-<html lang="ru" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>{% block title %}{% endblock %}</title>
-    </head>
-    <body>
-        <h1>My Site</h1>
-        <a href="{% url 'index' %}">Главная</a> /
-        {% if user.is_authenticated %}
-            <a href="{% url 'my_info' %}">Тупо инфа</a> /
-            <a href="{% url 'password_change' %}">Сменить пароль</a> /
-            <a href="{% url 'logout' %}">Выход</a>
-            <strong>{{ user.username }}</strong>
-        {% else %}
-            <a href="{% url 'signup' %}">Регистрация</a> /
-            <a href="{% url 'login' %}">Вход</a>
-        {% endif %}
-        <hr>
-        {% block content %}
-        {% endblock %}
-    </body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>{% block title %}ТУПО Сайт{% endblock %}</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark mb-3">
+          <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}">ТС</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Тупо каталог
+                    </button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Тупо футболки</a>
+                  <a class="dropdown-item" href="#">Тупо чашки</a>
+                  <a class="dropdown-item" href="#">Тупо блокноты</a>
+                  <a class="dropdown-item" href="#">Тупо чехлы</a>
+                </div>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Тупо корзина <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+            {% if user.is_authenticated %}
+                <ul class="navbar-nav">
+                  <li class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ user.username }}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{% url 'my_info' %}">Тупо инфа</a>
+                      <a class="dropdown-item" href="{% url 'password_change' %}">Сменить пароль</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'logout' %}">Выход</a>
+                    </div>
+                  </li>
+                </ul>
+            {% else %}
+                <form class="form-inline my-2 my-lg-0">
+                    <a href="{% url 'login' %}" class="btn btn-danger">Вход</a>
+                    <a href="{% url 'signup' %}" class=" btn btn-outline-light ml-1">Регистрация</a>
+                </form>
+            {% endif %}
+          </div>
+    </div>
+    </nav>
+      <div class="container">
+          {% block content %}
+          {% endblock %}
+     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>
